@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
+import { NewUserRoutingModule } from './new-user-routing.module';
+import { NewUserComponent } from './new-user.component';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
+
 @NgModule({
   declarations: [
-    LoginComponent
+    NewUserComponent
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    NewUserRoutingModule,
     ReactiveFormsModule,
     NzFormModule,
     NzInputModule,
-    NzButtonModule
-    
+    NzButtonModule,
   ]
 })
-export class LoginModule { }
+export class NewUserModule { }

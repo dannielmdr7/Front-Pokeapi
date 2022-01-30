@@ -1,16 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthResponse } from 'src/app/interfaces/auth.interface';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-new-user',
+  templateUrl: './new-user.component.html',
+  styleUrls: ['./new-user.component.css']
 })
-export class LoginComponent implements OnInit {
+export class NewUserComponent implements OnInit {
   validateForm!: FormGroup;
-  constructor(private fb: FormBuilder, private http: HttpClient, private router : Router) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
@@ -21,18 +19,13 @@ export class LoginComponent implements OnInit {
 
   submitForm(): void {
     if (this.validateForm.valid) {
+      console.log('submit', this.validateForm.value);
       this.http
-        .post('http://localhost:3000/authUser', {
+        .post('http://localhost:3000/createUser', {
           user: this.validateForm.value.userName,
           password: this.validateForm.value.password,
         })
-        .subscribe((res:any) => {
-          console.log(res)
-          if(res.ok == true){
-            this.router.navigateByUrl('/home');
-            localStorage.setItem('navigationToken',res.token)
-          }
-        });
+        .subscribe((res) => console.log(res));
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -47,5 +40,4 @@ export class LoginComponent implements OnInit {
     
   }
 
-  
 }
