@@ -13,21 +13,13 @@ export class PokemonService {
 
   constructor(private http:HttpClient) { }
   getPokemonDetail(name:string){
-    const headers = new HttpHeaders()
-            .set("x-token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MWY3MzI0OGZmYTA5NDQ3YzBkYWNjMzUiLCJuaWNrTmFtZSI6IkRhbmllbCIsInRlYW0iOiJBenVsIiwiaWF0IjoxNjQzNjQwMzQ2LCJleHAiOjE2NDM3MjY3NDZ9.uDR5mGKSIWHIbMAvuzuxDWGoaKwk4nFgCSiv5XbAhyQ")
-            .set('name',name)
-    return this.http.get<PokemonDetailToFront>(`http://localhost:3000/pokemon`,{headers});
+
+    return this.http.get<PokemonDetailToFront>(`http://localhost:3000/pokemon/${name}`);
   }
   getPokemonsPaginated(pageToCharge:string | null){
     const pageToChargeArguments = pageToCharge?.split('?')
     if(pageToChargeArguments){
-      const pageOffset=pageToChargeArguments[1].split('&')[0];
-      const pageLimit=pageToChargeArguments[1].split('&')[1];
-      console.log(pageToChargeArguments[1]);
-      const headers = new HttpHeaders()
-            .set("x-token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MWY3MzI0OGZmYTA5NDQ3YzBkYWNjMzUiLCJuaWNrTmFtZSI6IkRhbmllbCIsInRlYW0iOiJBenVsIiwiaWF0IjoxNjQzNjQwMzQ2LCJleHAiOjE2NDM3MjY3NDZ9.uDR5mGKSIWHIbMAvuzuxDWGoaKwk4nFgCSiv5XbAhyQ")
-            .set('limit',pageToChargeArguments[1])
-    return this.http.get<PokemonsResponse>(`http://localhost:3000/pokemonsPage`,{headers}).pipe(
+    return this.http.get<PokemonsResponse>(`http://localhost:3000/pokemonsPage/${pageToChargeArguments[1]}`).pipe(
       map(this.transformToPokemon)
     )
     }
@@ -38,7 +30,6 @@ export class PokemonService {
     // const data = this.getDecodedAccessToken(JSON.stringify(localStorage.getItem('navigationToken')))
     // console.log(data);
     const headers = new HttpHeaders()
-            .set("x-token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MWY3MzI0OGZmYTA5NDQ3YzBkYWNjMzUiLCJuaWNrTmFtZSI6IkRhbmllbCIsInRlYW0iOiJBenVsIiwiaWF0IjoxNjQzNjQwMzQ2LCJleHAiOjE2NDM3MjY3NDZ9.uDR5mGKSIWHIbMAvuzuxDWGoaKwk4nFgCSiv5XbAhyQ");
     return this.http.get<PokemonsResponse>(`http://localhost:3000/pokemons`,{headers})
                     .pipe(
                       map(this.transformToPokemon)

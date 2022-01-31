@@ -9,7 +9,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./pokemon-detail.component.css']
 })
 export class PokemonDetailComponent implements OnInit {
-  public pokemonDetail:any;
+  public pokemonDetail:PokemonDetail={};
   public isLoad:boolean = true;
   public name:string='';
 
@@ -18,6 +18,8 @@ export class PokemonDetailComponent implements OnInit {
   ngOnInit(): void {
     this.name= this._route.snapshot.paramMap.get('name') || '';
     this.pokemonService.getPokemonDetail(this.name).subscribe((data)=>{
+      console.log(data);
+      
       this.isLoad = false;
       this.pokemonDetail = data.data;
     })

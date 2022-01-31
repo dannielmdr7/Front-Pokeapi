@@ -1,7 +1,11 @@
 <div [ngStyle]="{'background-color':color()}"  class="flex w-90 justify-between ml-4 mr-10 border my-4 rounded rounded-lg " >
   <div class="flex items-center" >
     <img src="../../../assets/pikachu.jpeg" class="w-32 m-2 rounded rounded-lg" alt="">
-    <h1>Bienvenido: {{user.nickName}} </h1>
+    <div class="flex flex-wrap" >
+      <h1>Bienvenido: </h1>
+      <h1 class="font-black" >{{user.nickName}} </h1>
+
+    </div>
   </div>
   <div class="flex items-center" >
     <button

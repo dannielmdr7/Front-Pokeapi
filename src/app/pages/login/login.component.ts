@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('loged/home');
             localStorage.setItem('navigationToken',res.token)
           }
+        },(error:HttpErrorResponse)=>{
+          console.log(error);
+          
         });
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
