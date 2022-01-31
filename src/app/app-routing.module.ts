@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'newUser',canActivate:[LoggedOutGuard], loadChildren: () => import('./pages/new-user/new-user.module').then(m => m.NewUserModule) },
   { path: 'loged', component:LayoutComponent,canActivate:[LoggedGuard],children:[
     { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
-    { path: 'detail/:name', loadChildren: () => import('./components/pokemon-detail/pokemon-detail.module').then(m => m.PokemonDetailModule) },
+    { path: 'detail/:id', loadChildren: () => import('./components/pokemon-detail/pokemon-detail.module').then(m => m.PokemonDetailModule) },
 
   ] }
 ];

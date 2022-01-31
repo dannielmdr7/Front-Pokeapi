@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
 export class PokemonService {
 
   constructor(private http:HttpClient) { }
-  getPokemonDetail(name:string){
+  getPokemonDetail(id:string){
 
-    return this.http.get<PokemonDetailToFront>(`http://localhost:3000/pokemon/${name}`);
+    return this.http.get<PokemonDetailToFront>(`http://localhost:3000/pokemon/${id}`);
   }
   getPokemonsPaginated(pageToCharge:string | null){
     const pageToChargeArguments = pageToCharge?.split('?')

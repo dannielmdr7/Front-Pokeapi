@@ -24,7 +24,7 @@ export class CardDetailComponent implements OnInit {
     console.log(this.user);
   }
   seeMore(){
-    this.router.navigateByUrl(`loged/detail/${this.pokemon.name}`)
+    this.router.navigateByUrl(`loged/detail/${this.pokemon.id}`)
   }
   color(){
     switch (this.user.team) {
