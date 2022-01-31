@@ -1,14 +1,15 @@
 
-<nz-spin *ngIf="isLoad == true; else card" nzSimple></nz-spin>
-<ng-template #card >
-  <nz-card  style="width:300px;" [nzTitle]="pokemon.name" [nzExtra]="extraTemplate">
 
-    <!-- <p> {{pokemonDetail.types[0].type.name}} </p> -->
-    <img [src]="pokemonDetail.sprites.front_default" alt="">
+
+  <nz-card style="width: 300px;height: 300px;"  [nzTitle]="pokemon.name" [nzExtra]="extraTemplate" class="mx-4  rounded rounded-lg drop-shadow-2xl" >
+    <h1 class="font-black text-xl" > {{pokemon.id}} </h1>
+    <div class="flex item-center" >
+      <img class="mx-auto w-32" [src]="pokemon.img" alt="">
+
+    </div>
   </nz-card>
   <ng-template #extraTemplate>
     <div class="grid grid-rows" >
       <button nz-button nzType="primary" (click)="clickado()" >See more</button>
     </div>
   </ng-template>
-</ng-template>

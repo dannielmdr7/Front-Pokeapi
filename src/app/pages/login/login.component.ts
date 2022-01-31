@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
           password: this.validateForm.value.password,
         })
         .subscribe((res:any) => {
-          console.log(res)
           if(res.ok == true){
             this.router.navigateByUrl('/home');
             localStorage.setItem('navigationToken',res.token)
@@ -41,10 +40,6 @@ export class LoginComponent implements OnInit {
         }
       });
     }
-  }
-  register(){
-    console.log('cambio de pantalla');
-    
   }
 
   

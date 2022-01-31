@@ -24,6 +24,40 @@
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your NickName!">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="text" nz-input formControlName="nickName" placeholder="NickName" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please Select a team">
+        <nz-input-group nzPrefixIcon="team">
+          <a nz-dropdown [nzDropdownMenu]="menu" >
+            {{textDefault}}
+            <i nz-icon nzType="down"></i>
+          </a>
+          <nz-dropdown-menu #menu="nzDropdownMenu" >
+            <ul
+          class="size-drop"
+          nz-menu
+          nzSelectable
+          style="border-radius: 10px; height: auto; word-wrap: break-word"
+        >
+          <button
+          (click)="selectTeam(team)"
+            class="mb-0 borderElement"
+            nz-menu-item
+            *ngFor="let team of teamOptions"
+          >
+            {{team}}
+          </button>
+        </ul>
+          </nz-dropdown-menu>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
     <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Create User</button>
     <br>
   </form>

@@ -5,6 +5,9 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { CardDetailModule } from 'src/app/components/card-detail/card-detail.module';
 
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +16,9 @@ import { CardDetailModule } from 'src/app/components/card-detail/card-detail.mod
   imports: [
     CommonModule,
     HomeRoutingModule,
-    CardDetailModule
+    CardDetailModule,
+    NzButtonModule,
+    NzSpinModule
   ]
 })
 export class HomeModule { }

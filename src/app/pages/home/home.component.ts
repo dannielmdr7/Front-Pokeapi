@@ -1,5 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import jwt_decode from 'jwt-decode';
+import { DataToFront, Pokemon } from 'src/app/interfaces/pokemon.Interfaces';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +10,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private http:HttpClient) { }
-  public pokemons:any;
+  constructor(private pokemonService:PokemonService) { }
+  public pokemons:DataToFront={next:'',prev:'',pokemons:[]};
+  public isLoad:boolean = false;
 
   ngOnInit(): void {
-    const headers = new HttpHeaders()
-            .set("x-token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MWY2YTI0OGM2ZmNlZTg5Mjc4OWZlYTUiLCJpYXQiOjE2NDM1NTMzNjIsImV4cCI6MTY0MzYzOTc2Mn0.mba5IdcRTbellwjdEegSLJZI1CzlRtYp-K9M-7iDL4k");
-    this.http.get(`http://localhost:3000/usuarios`,{headers}).subscribe((response:any)=>{
-      this.pokemons=response.data.results;
+    this.pokemonService.getAllPokemons().subscribe((res)=>{
+      this.pokemons = res
     })
+  }
+  prevPage(){
+    this.isLoad = true;
+    this.pokemonService.getPokemonsPaginated(this.pokemons.prev)?.subscribe(data=>{
+    this.isLoad = false;
+      this.pokemons = data;
+    })
+
+  }
+  nextPage(){
+    this.isLoad = true;
+    this.pokemonService.getPokemonsPaginated(this.pokemons.next)?.subscribe(data=>{
+    this.isLoad = false;
+      this.pokemons = data;
+    })
+  }
+  click(){
+    console.log('click');
+    
   }
 
 }

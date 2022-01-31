@@ -1,3 +1,18 @@
-<div  class="grid grid-cols-3 xl:grid-cols-5 gap-1 " >
-  <app-card-detail *ngFor="let pokemon of pokemons" class="col-span-1" [pokemon]="pokemon" ></app-card-detail>
+
+
+<div *ngIf="isLoad == true; else content" class="example ">
+  <nz-spin nzSimple class="w-screen mx-auto" [nzSize]="'large'" ></nz-spin>
 </div>
+<ng-template #content class="w-sreen" >
+
+  <div  class="grid grid-rows w-screen " >
+    <div class="flex justify-between mx-4">
+      <button [ngClass]="{'disabled': pokemons.prev == null}" (click)="prevPage()" nz-button nzType="primary">Prev</button>
+      <button (click)="nextPage()" nz-button nzType="primary">Next</button>
+    </div>
+    <br>
+    <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-1 " >
+      <app-card-detail  *ngFor="let pokemon of pokemons.pokemons" class="col-span-1" [pokemon]="pokemon" ></app-card-detail>
+    </div>
+  </div>
+</ng-template>

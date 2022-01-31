@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Pokemon } from 'src/app/interfaces/pokemon.Interfaces';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -8,18 +9,14 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./card-detail.component.css']
 })
 export class CardDetailComponent implements OnInit {
-  @Input() pokemon:any;
+  @Input() pokemon:Pokemon={id:'',name:'',img:''};
   public isLoad:boolean = true;
-  public pokemonDetail:any;
+  public pokemonDetail:Pokemon={id:'',name:'',img:''};
   public checked:boolean=false;
 
   constructor(private pokemonService:PokemonService, private router:Router) {
   }
   ngOnInit(): void {
-    this.pokemonService.getPokemonDetail(this.pokemon.name).subscribe((data:any)=>{
-      this.isLoad =  false;
-      this.pokemonDetail = data.data;
-    })
   }
   clickado(){
     this.router.navigateByUrl(`/detail/${this.pokemon.name}`)
