@@ -11,54 +11,56 @@
   </div>
   <form nz-form [formGroup]="validateForm" class="login-form grid  mt-24 mx-auto border rounded rounded-lg p-4" (ngSubmit)="submitForm()">
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your username!">
+      <nz-form-control nzErrorTip="Por favor ingrese su username!">
         <nz-input-group nzPrefixIcon="user">
           <input type="text" nz-input formControlName="userName" placeholder="Username" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-form-control nzErrorTip="Por favor ingrese su Password!">
         <nz-input-group nzPrefixIcon="lock">
           <input type="password" nz-input formControlName="password" placeholder="Password" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your NickName!">
-        <nz-input-group nzPrefixIcon="lock">
+      <nz-form-control nzErrorTip="Por favor ingrese su NickName!">
+        <nz-input-group nzPrefixIcon="smile">
           <input type="text" nz-input formControlName="nickName" placeholder="NickName" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Please Select a team">
-        <nz-input-group nzPrefixIcon="team">
-          <a nz-dropdown [nzDropdownMenu]="menu" >
-            {{textDefault}}
-            <i nz-icon nzType="down"></i>
-          </a>
-          <nz-dropdown-menu #menu="nzDropdownMenu" >
-            <ul
+    <div class="grid grid-rows" >
+      <div class=" flex items-center border border-gray-200 mb-2 p-1" >
+        <i nz-icon nzType="team" class="mr-2" nzTheme="outline"></i>
+        
+        <a nz-dropdown [nzDropdownMenu]="menu" >
+          {{textDefault}}
+          <i nz-icon nzType="down"></i>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu" >
+          <ul
           class="size-drop"
           nz-menu
           nzSelectable
           style="border-radius: 10px; height: auto; word-wrap: break-word"
-        >
+          >
           <button
           (click)="selectTeam(team)"
-            class="mb-0 borderElement"
-            nz-menu-item
-            *ngFor="let team of teamOptions"
+          class="mb-0 borderElement"
+          nz-menu-item
+          *ngFor="let team of teamOptions"
           >
-            {{team}}
-          </button>
-        </ul>
-          </nz-dropdown-menu>
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Create User</button>
+          {{team}}
+        </button>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+  <h1 class="text-red-500 mb-2" *ngIf="hasNoTeam" >Por favor selecciona un equipo!</h1>
+        
+    </div>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Crer User</button>
     <br>
   </form>
 </div>

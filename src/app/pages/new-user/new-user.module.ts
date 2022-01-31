@@ -8,6 +8,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     NzFormModule,
     NzInputModule,
     NzButtonModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzIconModule
   ]
 })
 export class NewUserModule { }
