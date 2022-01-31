@@ -1,0 +1,23 @@
+<div [ngStyle]="{'background-color':color()}"  class="flex w-90 justify-between ml-4 mr-10 border my-4 rounded rounded-lg " >
+  <div class="flex items-center" >
+    <img src="../../../assets/pikachu.jpeg" class="w-32 m-2 rounded rounded-lg" alt="">
+    <h1>Bienvenido: {{user.nickName}} </h1>
+  </div>
+  <div class="flex items-center" >
+    <button
+    class="mr-16"
+        nz-button
+        nz-popover
+        [nzPopoverContent]="contentTemplate"
+        nzPopoverPlacement="bottom"
+      >
+      <i style="font-size: 40px;" nz-icon nzType="setting" nzTheme="outline"></i>
+      </button>
+      <ng-template #contentTemplate>
+        <button (click)="loggedOut()" >
+          Cerrar sesión
+        </button>
+      </ng-template>
+  </div>
+
+</div>

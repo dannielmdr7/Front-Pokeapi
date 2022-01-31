@@ -6,13 +6,14 @@
 <ng-template #content class="w-sreen" >
 
   <div  class="grid grid-rows w-screen " >
-    <div class="flex justify-between mx-4">
+    <div class="flex justify-between ml-4 mr-10 ">
       <button [ngClass]="{'disabled': pokemons.prev == null}" (click)="prevPage()" nz-button nzType="primary">Prev</button>
       <button (click)="nextPage()" nz-button nzType="primary">Next</button>
     </div>
-    <br>
-    <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-1 " >
-      <app-card-detail  *ngFor="let pokemon of pokemons.pokemons" class="col-span-1" [pokemon]="pokemon" ></app-card-detail>
+    <div class="flex " >
+      <div class="grid grid-cols-6 gap-2 w-10/12 mx-auto" >
+        <app-card-detail  *ngFor="let pokemon of pokemons.pokemons" class="col-span-2" [pokemon]="pokemon" ></app-card-detail>
+      </div>
     </div>
   </div>
 </ng-template>

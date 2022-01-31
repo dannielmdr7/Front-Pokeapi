@@ -1,9 +1,9 @@
-
-<nz-spin *ngIf="isLoad == true; else content" nzSimple></nz-spin>
-<ng-template #content class="w-sreen" >
+<div class="w-screen" >
+  <nz-spin *ngIf="isLoad == true; else content" nzSimple></nz-spin>
+  <ng-template #content class="w-sreen" >
   <div class="grid grid-cols-12" >
     <div class="col-span-4">
-
+      
       <img class="w-96" [src]="pokemonDetail.sprites.front_default" alt="">
     </div>
     <div class="col-span-8" >
@@ -11,8 +11,9 @@
       <h1 class="font-black text-lg " > Weigth: {{pokemonDetail.weight}} </h1>
       <h1 class="font-black text-lg " > Experience: {{pokemonDetail.base_experience}} </h1>
       <h1 class="font-black text-lg " > Type: {{pokemonDetail.types[0].type.name}} </h1>
-
+      
     </div>
-
+    
   </div>
 </ng-template>
+</div>

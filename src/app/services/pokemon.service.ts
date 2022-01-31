@@ -65,9 +65,10 @@ export class PokemonService {
     }
 
   }
-  getDecodedAccessToken(token: string): any {
+  getDecodedAccessToken() {
+    const data = JSON.stringify(localStorage.getItem('navigationToken'))
     try {
-      return jwt_decode(token);
+      return jwt_decode(data);
     } catch(Error) {
       return null;
     }
