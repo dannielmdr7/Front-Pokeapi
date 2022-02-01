@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'loged', component:LayoutComponent,canActivate:[LoggedGuard],children:[
     { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
     { path: 'detail/:id', loadChildren: () => import('./components/pokemon-detail/pokemon-detail.module').then(m => m.PokemonDetailModule) },
-
-  ] }
+  ] },
+  { path: '**', pathMatch: 'full', redirectTo: '/login' },
 ];
 
 @NgModule({
