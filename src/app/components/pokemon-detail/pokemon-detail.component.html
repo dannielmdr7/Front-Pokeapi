@@ -2,16 +2,17 @@
   <nz-spin *ngIf="isLoad == true; else content" nzSimple></nz-spin>
   <ng-template #content class="w-sreen" >
   <div class="grid grid-cols-12" >
-    <div class="col-span-4">
-      
-      <img class="w-96" [src]="pokemonDetail.sprites?.front_default" alt="">
+    <div class="col-span-8">
+      <div class="flex" >
+        <img class="w-96" [src]="pokemonDetail.sprites?.front_default" alt="">
+        <img class="w-96" [src]="pokemonDetail.sprites?.front_shiny" alt="">
+      </div>
     </div>
-    <div class="col-span-8" >
+    <div class="col-span-4" >
       <h1 class="font-black text-xl "  >Name: {{pokemonDetail.name}} </h1>
       <h1 class="font-black text-lg " > Weigth: {{pokemonDetail.weight}} </h1>
       <h1 class="font-black text-lg " > Experience: {{pokemonDetail.base_experience}} </h1>
-  
-      
+      <h1 class="font-black text-lg " > Order: {{pokemonDetail.order}} </h1>
     </div>
     
   </div>

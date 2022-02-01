@@ -67,7 +67,10 @@ export class NewUserComponent implements OnInit {
       this.hasNoTeam = true;
 
     } else {
-      this.hasNoTeam = true;
+      if(this.textDefault == 'Selecciona un Equipo'){
+
+        this.hasNoTeam = true;
+      }
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
@@ -75,9 +78,6 @@ export class NewUserComponent implements OnInit {
         }
       });
     }
-  }
-  register() {
-    console.log('cambio de pantalla');
   }
   selectTeam(team: string) {
     this.hasNoTeam = false;

@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getInfoUser();
-    console.log(this.user);
   }
   color(){
     switch (this.user.team) {

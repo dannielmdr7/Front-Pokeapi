@@ -27,8 +27,6 @@ export class PokemonService {
 
   }
   getAllPokemons():Observable<DataToFront>{
-    // const data = this.getDecodedAccessToken(JSON.stringify(localStorage.getItem('navigationToken')))
-    // console.log(data);
     const headers = new HttpHeaders()
     return this.http.get<PokemonsResponse>(`http://localhost:3000/pokemons`,{headers})
                     .pipe(
@@ -36,7 +34,6 @@ export class PokemonService {
                     )
   }
   private transformToPokemon(resp : PokemonsResponse):DataToFront{
-    console.log(resp.data.results);
     const pokemonList : Pokemon[]= resp.data.results.map(poke => {
 
       const dataUrl = poke.url.split('/');

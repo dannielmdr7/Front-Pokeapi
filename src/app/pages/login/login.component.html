@@ -1,12 +1,15 @@
-<div class="flex flex-col 0 w-screen">
-  <div class="w-screen flex justify-between " >
-    <div class="flex content-center" >
+<div class=" background-image flex flex-col 0 w-screen h-screen"  >
+  <div class="w-screen flex justify-between border px-4 py-2 rounded rounded-lg border-gray-200 " style="background-color: rgba(46, 46, 158, 0.753);"  >
+    <div class="flex items-center" >
       <img src="../../../assets/pokemon.png" class="w-34 h-24" alt="">
-      <h1 class="">
+      <h1 class="text-xl text-white font-black">
         Bienvenido a la pokemon app
       </h1>
     </div>
-    <button [routerLink]="['/newUser']" >Registrarse</button>
+    <div class="flex items-center" >
+      <button class="text-xl text-white font-black border border-gray-200 rounded rounded-lg px-4 py-2 hover:bg-gray-400 " [routerLink]="['/newUser']" >Registrarse</button>
+
+    </div>
 
   </div>
   <form nz-form [formGroup]="validateForm" class="login-form grid  mt-24 mx-auto border rounded rounded-lg p-4" (ngSubmit)="submitForm()">
@@ -24,7 +27,7 @@
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
-    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+    <button nz-button class="login-form-button login-form-margi n" [nzType]="'primary'">Log in</button>
     <br>
   </form>
 </div>

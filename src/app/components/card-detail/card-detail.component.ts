@@ -21,7 +21,6 @@ export class CardDetailComponent implements OnInit {
   }
   ngOnInit(): void {
     this.user = this.userService.getInfoUser();
-    console.log(this.user);
   }
   seeMore(){
     this.router.navigateByUrl(`loged/detail/${this.pokemon.id}`)

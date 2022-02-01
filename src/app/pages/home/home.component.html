@@ -7,11 +7,11 @@
 
   <div  class="grid grid-rows w-screen " >
     <div class="flex justify-between ml-4 mr-10 ">
-      <button [ngClass]="{'disabled': pokemons.prev == null}" (click)="prevPage()" nz-button nzType="primary">Prev</button>
-      <button (click)="nextPage()" nz-button nzType="primary">Next</button>
+      <button [ngClass]="{'disabled': pokemons.prev == null}" (click)="prevPage()" nz-button nzType="primary">Anterior</button>
+      <button (click)="nextPage()" nz-button nzType="primary">Siguiente</button>
     </div>
     <div class="flex " >
-      <div class="grid grid-cols-6 gap-2 w-10/12 mx-auto" >
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1 w-10/12 mx-auto" >
         <app-card-detail  *ngFor="let pokemon of pokemons.pokemons" class="col-span-2" [pokemon]="pokemon" ></app-card-detail>
       </div>
     </div>

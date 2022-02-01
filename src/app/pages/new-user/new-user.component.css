@@ -1,0 +1,8 @@
+.background-image{
+  background-image: url('../../../assets/newBack.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center; /* Center the image */
+}
