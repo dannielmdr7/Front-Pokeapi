@@ -1,25 +1,28 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
-import {  DataToFront, Pokemon, PokemonDetail, PokemonDetailToFront, PokemonsResponse } from '../interfaces/pokemon.Interfaces';
+import {  DataToFront, Pokemon, PokemonDetailToFront, PokemonsResponse } from '../interfaces/pokemon.Interfaces';
 import {map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 ;
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
+  private apiUrl = environment.apiUrl;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+   }
   getPokemonDetail(id:string){
 
-    return this.http.get<PokemonDetailToFront>(`http://localhost:3000/pokemon/${id}`);
+    return this.http.get<PokemonDetailToFront>(`${this.apiUrl}/pokemon/${id}`);
   }
   getPokemonsPaginated(pageToCharge:string | null){
     const pageToChargeArguments = pageToCharge?.split('?')
     if(pageToChargeArguments){
-    return this.http.get<PokemonsResponse>(`http://localhost:3000/pokemonsPage/${pageToChargeArguments[1]}`).pipe(
+    return this.http.get<PokemonsResponse>(`${this.apiUrl}/pokemonsPage/${pageToChargeArguments[1]}`).pipe(
       map(this.transformToPokemon)
     )
     }
@@ -27,8 +30,7 @@ export class PokemonService {
 
   }
   getAllPokemons():Observable<DataToFront>{
-    const headers = new HttpHeaders()
-    return this.http.get<PokemonsResponse>(`http://localhost:3000/pokemons`,{headers})
+    return this.http.get<PokemonsResponse>(`${this.apiUrl}/pokemons`)
                     .pipe(
                       map(this.transformToPokemon)
                     )

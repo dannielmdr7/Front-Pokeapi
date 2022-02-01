@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/interfaces/pokemon.Interfaces';
 import { User } from 'src/app/interfaces/user.interface';
-import { PokemonService } from 'src/app/services/pokemon.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({

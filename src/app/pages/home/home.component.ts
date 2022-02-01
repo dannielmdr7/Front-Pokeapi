@@ -1,7 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import jwt_decode from 'jwt-decode';
 import { DataToFront, Pokemon } from 'src/app/interfaces/pokemon.Interfaces';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { UserService } from 'src/app/services/user.service';
